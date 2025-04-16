@@ -15,10 +15,7 @@ def signup():
     if not all(k in data for k in ['full_name', 'email', 'password', 'role']):
         return jsonify({'error': 'Missing fields'}), 400
     
-    # Check if role is valid
-    if data['role'] not in ['lender', 'renter', 'admin']:
-        return jsonify({'error': 'Invalid role'}), 400
-    
+ 
     # Check if user exists
     if User.query.filter_by(email=data['email']).first():
         return jsonify({'error': 'Email already registered'}), 409
