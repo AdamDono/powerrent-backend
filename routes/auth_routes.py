@@ -25,7 +25,8 @@ def signup():
         full_name=data['full_name'],
         email=data['email'],
         password_hash=hash_password(data['password']),
-        role=data['role']
+        role='renter',  # Default role
+        is_verified=True  # Auto-verify for now
     )
     
     db.session.add(new_user)
